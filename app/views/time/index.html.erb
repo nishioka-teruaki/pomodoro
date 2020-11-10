@@ -1,2 +1,27 @@
-<h1>Time#index</h1>
-<p>Find me in app/views/time/index.html.erb</p>
+<div class="wrapper">
+  <%= render "side_bar" %>
+  <%= render "main_time" %>
+</div>
+
+<div class="upper_contents">
+  <div class="box1">
+    <span id="month_day"> </span><span class="time" id="pomo_number">0</span>
+    <span>ポモドーロ</span>
+  </div>
+  <div class="box2">
+    <p class="time">
+      00:
+      <span id="min">00</span>:
+      <span id="sec">00</span>
+    </p>
+  </div>
+</div>
+
+<div class="img_btn">
+  <div class="div_btn">
+    <button id="task" class="btn task_btn" type="button">作業</button>
+    <button id="break" class="btn break_btn" type="button">休憩</button>
+  </div>
+  <div id="start"><img src="./images/start.png"></div>
+  <div id="stop"><img src="./images/stop.png"></div>
+</div>
