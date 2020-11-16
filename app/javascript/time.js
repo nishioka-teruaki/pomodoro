@@ -54,7 +54,7 @@ document.getElementById('break').onclick = function() {
             }
             // 再生ボタンを一時停止ボタンに書き換え
             // id変更
-            document.getElementById('start').innerHTML = '<img src="./images/temporary.png" alt="一時停止">';
+            document.getElementById('start').innerHTML = '<img src="./images/temporary.png" alt="一時停止" height="25" width="25">';
             // カウント関数を１秒毎に動かす　変数に入れる
             counter = setInterval(count, 1000);
             // 一時停止ボタンが押された時の処理
@@ -63,7 +63,7 @@ document.getElementById('break').onclick = function() {
             click_num = 0;
             // 一時停止ボタンを再生ボタンに書き換え
             // id変更
-            document.getElementById('start').innerHTML = '<img src="./images/start.png"  alt="スタートボタン">';
+            document.getElementById('start').innerHTML = '<img src="./images/start.png"  alt="スタートボタン" height="25" width="25">';
             // カウント関数をストップ
             clearInterval(counter); 
             // 秒は時間を６０で割った余り
@@ -90,7 +90,7 @@ document.getElementById('break').onclick = function() {
     document.getElementById('min').textContent = zero_min;
     // 一時停止ボタンを再生ボタンに書き換え
     // id変更
-    document.getElementById('start').innerHTML = '<img src="./images/start.png"  alt="スタートボタン">';
+    document.getElementById('start').innerHTML = '<img src="./images/start.png"  alt="スタートボタン" height="25" width="25">';
   }
 
   // カウント関数
@@ -125,7 +125,7 @@ document.getElementById('break').onclick = function() {
         clearInterval(counter);
         // 一時停止ボタンを再生ボタンに書き換え
         // id変更
-        document.getElementById('start').innerHTML = '<img src="./images/start.png"  alt="スタートボタン">';
+        document.getElementById('start').innerHTML = '<img src="./images/start.png"  alt="スタートボタン" height="25" width="25">';
         // ゼロパディング
         zero_sec = zeroPadding(0,2)
         zero_min = zeroPadding(0,2)
