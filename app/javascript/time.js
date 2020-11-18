@@ -1,16 +1,38 @@
 window.addEventListener('load', function(){
   let click_task = 0
-  // 0...初期値
-  // 1...作業ボタン
-  // 2...休憩ボタン
-  // 3...
-  // 4...
-  // 5...作業ボタンが押されてカウントダウンが始まった時のリセット
-  // 6...
-  // 7...休憩ボタンが押されてカウトンダウンが始まった時のリセット
+    // 0...初期値
+    // 1...作業ボタン
+    // 2...休憩ボタン
+    // 3...
+    // 4...
+    // 5...作業ボタンが押されてカウントダウンが始まった時のリセット
+    // 6...
+    // 7...休憩ボタンが押されてカウトンダウンが始まった時のリセット
+
   let click_num = 0
-  // 0...タイマーがストップ状態
-  // 1...タイマーがスタート状態
+    // 0...タイマーがストップ状態
+    // 1...タイマーがスタート状態
+
+  // 作業中BGM
+  var audio1 = document.getElementById("workbgm1");
+  // アラーム音
+  var audio2 = document.getElementById("alarm1");
+  // 休憩中BGM
+  var audio3 = document.getElementById("break1");
+  // BGMを纏める
+  var a = audio1 + audio2 + audio3
+
+  // // 音量を上げる
+  // var uv = document.getElementById("upvolume")
+  // uv.addEventListener('click', function(){
+  //   a.volume = a.volume + 0.25;
+  // }
+  
+  // // 音量を下げる
+  // var dv = document.getElementById("downvolume")
+  // dv.xaddEventListener('click', function(){
+  //   a.volume = a.volume - 0.25;
+  // }
 
   // 作業ボタンがクリックされたとき
   document.getElementById('task').onclick = function() {
@@ -23,8 +45,6 @@ window.addEventListener('load', function(){
         time = 1500;
         // 作業ボタンが押されたフラグ
         click_task = 1;
-        // 作業用BGMの再生
-        
     }
   }
 
@@ -58,11 +78,15 @@ document.getElementById('break').onclick = function() {
             if (click_task == 1) {
                 // フラグ再セット
                 click_task = 5;
+                // 作業用BGMの再生
+                audio1.play();
             }
             // 休憩ボタンがボタンが押されてカウントダウンが始まったとき
             if (click_task == 2) {
                 // フラグ再セット
                 click_task = 7;
+                // 休憩用BGMの再生
+                audio3.play();
             }
             // 再生ボタンを一時停止ボタンに書き換え
             // id変更
@@ -76,6 +100,10 @@ document.getElementById('break').onclick = function() {
             // 一時停止ボタンを再生ボタンに書き換え
             // id変更
             document.getElementById('start').innerHTML = '<img src="./images/start.png"  alt="スタートボタン" height="25" width="25">';
+            // 作業用BGMの一時停止
+            audio1.pause();
+            // 休憩BGMの（一時）停止
+            audio3.pause();
             // カウント関数をストップ
             clearInterval(counter); 
             // 秒は時間を６０で割った余り
@@ -103,6 +131,10 @@ document.getElementById('break').onclick = function() {
     // 一時停止ボタンを再生ボタンに書き換え
     // id変更
     document.getElementById('start').innerHTML = '<img src="./images/start.png"  alt="スタートボタン" height="25" width="25">';
+    // 作業用BGMの（一時）停止
+    audio1.pause();
+    // 休憩BGMの（一時）停止
+    audio3.pause();
   }
 
   // カウント関数
@@ -118,6 +150,10 @@ document.getElementById('break').onclick = function() {
         if (click_task == 5) {
             // ２５分経過したことを通知
             window.alert("task_notification");
+            // 作業用BGMの（一時）停止
+            audio1.pause();
+            // アラームの再生
+            audio2.play();
             // ポモドーロ数をプラス１させる
             pomo_num++;
             // ポモドーロ数を画面に出力
@@ -128,6 +164,10 @@ document.getElementById('break').onclick = function() {
         if (click_task == 7) {
             // ５分経過したことを通知
             window.alert("break_notification");
+            // 休憩BGMの（一時）停止
+            audio3.pause();
+            // アラームの再生
+            audio2.play();
         }
         // スタート/ストップのフラグ初期化
         click_num = 0;
@@ -148,7 +188,6 @@ document.getElementById('break').onclick = function() {
     } else {
         // １秒ずつ減らしていく
         time -= 1;
-    
         // 秒は時間を６０で割った余り
         document.getElementById('sec').textContent = zeroPadding(time % 60, 2);
         // 分は時間を６０で割ったもの　小数点以下切り捨て
