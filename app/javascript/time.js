@@ -1,6 +1,16 @@
 window.addEventListener('load', function(){
   let click_task = 0
+  // 0...初期値
+  // 1...作業ボタン
+  // 2...休憩ボタン
+  // 3...
+  // 4...
+  // 5...作業ボタンが押されてカウントダウンが始まった時のリセット
+  // 6...
+  // 7...休憩ボタンが押されてカウトンダウンが始まった時のリセット
   let click_num = 0
+  // 0...タイマーがストップ状態
+  // 1...タイマーがスタート状態
 
   // 作業ボタンがクリックされたとき
   document.getElementById('task').onclick = function() {
@@ -13,6 +23,8 @@ window.addEventListener('load', function(){
         time = 1500;
         // 作業ボタンが押されたフラグ
         click_task = 1;
+        // 作業用BGMの再生
+        
     }
   }
 
@@ -105,7 +117,7 @@ document.getElementById('break').onclick = function() {
         // 作業ボタンが押されてカウントダウンが始まったとき
         if (click_task == 5) {
             // ２５分経過したことを通知
-            window.alert(task_notification);
+            window.alert("task_notification");
             // ポモドーロ数をプラス１させる
             pomo_num++;
             // ポモドーロ数を画面に出力
@@ -115,7 +127,7 @@ document.getElementById('break').onclick = function() {
   　　　　 // 休憩ボタンが押されてカウントダウンが始まったとき
         if (click_task == 7) {
             // ５分経過したことを通知
-            window.alert(break_notification);
+            window.alert("break_notification");
         }
         // スタート/ストップのフラグ初期化
         click_num = 0;
