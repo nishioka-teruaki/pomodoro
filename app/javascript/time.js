@@ -92,11 +92,22 @@ document.getElementById('break').onclick = function() {
                 // 休憩用BGMの再生
                 audio3.play();
             }
+            // 作業ボタンが押されてて一時停止が解除された時
+            if (click_task == 5) {
+              // 作業用BGMの再生
+              audio1.play();
+            }
+            // 休憩ボタンが押されてて一時停止が解除された時
+            if (click_task == 7) {
+              // 休憩用BGMの再生
+              audio3.play();
+            }
             // 再生ボタンを一時停止ボタンに書き換え
             // id変更
             document.getElementById('start').innerHTML = '<img src="./images/temporary.png" alt="一時停止" height="25" width="25">';
             // カウント関数を１秒毎に動かす 変数に入れる
             counter = setInterval(count, 1000);
+
             // 一時停止ボタンが押された時の処理
         } else {
             // ストップ状態を表すフラグ
