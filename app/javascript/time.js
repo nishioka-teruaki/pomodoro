@@ -13,6 +13,9 @@ window.addEventListener('load', function(){
     // 0...タイマーがストップ状態
     // 1...タイマーがスタート状態
 
+  // ポモドーロタイマーの実行回数
+  let pomo_num = 0
+
   // 作業中BGM
   var audio1 = document.getElementById("workbgm1");
   // アラーム音
@@ -41,7 +44,7 @@ window.addEventListener('load', function(){
         // タイマー初期値セット
         document.getElementById('min').textContent = zeroPadding(25, 2);
         document.getElementById('sec').textContent = zeroPadding(0, 2);
-        // ２５分をセット　６０秒×２５分=１５００
+        // ２５分をセット ６０秒×２５分=１５００
         time = 1500;
         // 作業ボタンが押されたフラグ
         click_task = 1;
@@ -60,6 +63,7 @@ document.getElementById('break').onclick = function() {
       // タイマー初期値セット
       document.getElementById('min').textContent = zeroPadding(5, 2);
       document.getElementById('sec').textContent = zeroPadding(0, 2);
+      // ５分をセット ６０秒×５分=３００
       time = 300;
       // 休憩ボタンが押されたフラグ
       click_task = 2;
@@ -91,7 +95,7 @@ document.getElementById('break').onclick = function() {
             // 再生ボタンを一時停止ボタンに書き換え
             // id変更
             document.getElementById('start').innerHTML = '<img src="./images/temporary.png" alt="一時停止" height="25" width="25">';
-            // カウント関数を１秒毎に動かす　変数に入れる
+            // カウント関数を１秒毎に動かす 変数に入れる
             counter = setInterval(count, 1000);
             // 一時停止ボタンが押された時の処理
         } else {
@@ -108,7 +112,7 @@ document.getElementById('break').onclick = function() {
             clearInterval(counter); 
             // 秒は時間を６０で割った余り
             document.getElementById('sec').textContent = zeroPadding(time % 60, 2);
-            // 分は時間を６０で割ったもの　小数点以下切り捨て
+            // 分は時間を６０で割ったもの 小数点以下切り捨て
             document.getElementById('min').textContent = zeroPadding(Math.floor(time / 60), 2);
         }
     }
@@ -148,9 +152,8 @@ document.getElementById('break').onclick = function() {
         
         // 作業ボタンが押されてカウントダウンが始まったとき
         if (click_task == 5) {
-            // ２５分経過したことを通知
-            window.alert("task_notification");
-            // 作業用BGMの（一時）停止
+            // ２５分経過
+            // 作業BGMの（一時）停止
             audio1.pause();
             // アラームの再生
             audio2.play();
@@ -160,10 +163,9 @@ document.getElementById('break').onclick = function() {
             document.getElementById('pomo_number').textContent = pomo_num;
         }
 
-  　　　　 // 休憩ボタンが押されてカウントダウンが始まったとき
+        // 休憩ボタンが押されてカウントダウンが始まったとき
         if (click_task == 7) {
-            // ５分経過したことを通知
-            window.alert("break_notification");
+            // ５分経過
             // 休憩BGMの（一時）停止
             audio3.pause();
             // アラームの再生
@@ -190,7 +192,7 @@ document.getElementById('break').onclick = function() {
         time -= 1;
         // 秒は時間を６０で割った余り
         document.getElementById('sec').textContent = zeroPadding(time % 60, 2);
-        // 分は時間を６０で割ったもの　小数点以下切り捨て
+        // 分は時間を６０で割ったもの小数点以下切り捨て
         document.getElementById('min').textContent = zeroPadding(Math.floor(time / 60), 2);
     }
   }
