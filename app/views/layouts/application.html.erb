@@ -7,21 +7,28 @@
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%# フォント追加 %>
+    <link href="https://fonts.googleapis.com/css?family=BioRhyme+Expanded" rel="stylesheet">
+    <%# ファビコン %>
+    <link rel="icon" href="/images/favicon.ico">    
+    <%# スマホ用アイコン %>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <%# Androidでタブの色を変更 %>
+    <meta name="theme-color" content="#378586">
   </head>
 
   <body>
       <header class="header">
-      <div class="header__bar row">
-        <h1 class="grid-6"><a href="/">Pomodoroアプリ</a></h1>
-        <div class="user_nav grid-6">
-          <a class="post" href="/">メニュー</a>
+        <div class="header_bar">
+          <div class="header_title"><a class="header_title_c" href="/">Pomodoroアプリ</a></div>
+          <div class="header_menu"><a class="header_menu_c" href="/">メニュー</a></div>
         </div>
-      </div>
-    </header>
+      </header>
     <%= yield %>
-          <p>
-        Copyright 2020. Pomodoro
-      </p>
-    </footer>
+      <footer>
+        <div class="footer_bar">
+          <div class="copyright"><p >Copyright 2020. Pomodoroアプリ</p></div>
+        </div>
+      </footer>
   </body>
 </html>
