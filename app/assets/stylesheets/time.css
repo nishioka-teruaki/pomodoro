@@ -1,17 +1,52 @@
-/* メイン部分 */
+/* メイン部分全体 */
 .wrapper {
   display: flex;
 }
 
 /* サイドバー部分 */
-.side-bar {
+.side_main {
   background-color: #ffffff;
   width: 300px;
   height: calc(100vh - 110px);
-  padding: 10px 20px 0px;
+  padding: 20px 15px 0px;
   overflow: scroll;
 }
 
+.img_btn_start{
+  display: flex;
+}
+
+.img_btn_stop{
+  display: flex;
+}
+
+.btns{
+  height: 30px;
+  width: 30px;
+  margin: 0px 10px 15px 0px;
+}
+
+.div_task{
+  display: flex;
+}
+
+.div_task_btn{
+  font-size: large;
+  margin: 0px 10px 15px 0px;
+}
+
+.div_break{
+  display: flex;
+}
+
+.div_break_btn{
+  font-size: large;
+  margin: 0px 10px 15px 0px;
+}
+
+.note{
+  font-size: 17px;
+}
 /* 時間部分 */
 .contents{
   display: flex;

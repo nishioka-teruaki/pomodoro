@@ -19,6 +19,12 @@
   margin-left: 10px;
 }
 
+.explanation{
+  color: #57C3E9;
+  font-size: 15px;
+  font-weight:  200;
+}
+
 .header_menu_c{
   color: #57C3E9;
   text-decoration: none;
@@ -39,9 +45,6 @@
   justify-content: center;
   padding-top: 10px;
   border-top: 1px solid #a9b0b3;
-}
-
-.copyright{
 }
 
 /* タブレット対応 */

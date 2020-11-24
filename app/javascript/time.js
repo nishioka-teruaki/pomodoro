@@ -1,3 +1,4 @@
+window.alert("当サイトは音が流れますので外でのご使用時はお気をつけください")
 window.addEventListener('load', function(){
   let click_task = 0
     // 0...初期値
@@ -104,7 +105,7 @@ document.getElementById('break').onclick = function() {
             }
             // 再生ボタンを一時停止ボタンに書き換え
             // id変更
-            document.getElementById('start').innerHTML = '<img src="./images/temporary.png" alt="一時停止" height="25" width="25">';
+            document.getElementById('start').innerHTML = '<img class="btns" src="./images/temporary.png" alt="一時停止"><p>スタート／ストップ</p>';
             // カウント関数を１秒毎に動かす 変数に入れる
             counter = setInterval(count, 1000);
 
@@ -114,7 +115,7 @@ document.getElementById('break').onclick = function() {
             click_num = 0;
             // 一時停止ボタンを再生ボタンに書き換え
             // id変更
-            document.getElementById('start').innerHTML = '<img src="./images/start.png"  alt="スタートボタン" height="25" width="25">';
+            document.getElementById('start').innerHTML = '<img class="btns" src="./images/start.png" alt="スタートボタン"><p>スタート／ストップ</p>';
             // 作業用BGMの一時停止
             audio1.pause();
             // 休憩BGMの（一時）停止
@@ -145,7 +146,7 @@ document.getElementById('break').onclick = function() {
     document.getElementById('min').textContent = zero_min;
     // 一時停止ボタンを再生ボタンに書き換え
     // id変更
-    document.getElementById('start').innerHTML = '<img src="./images/start.png"  alt="スタートボタン" height="25" width="25">';
+    document.getElementById('start').innerHTML = '<img class="btns" src="./images/start.png"  alt="スタートボタン"><p>スタート／ストップ</p>';
     // 作業用BGMの（一時）停止
     audio1.pause();
     // 休憩BGMの（一時）停止
@@ -190,7 +191,7 @@ document.getElementById('break').onclick = function() {
         clearInterval(counter);
         // 一時停止ボタンを再生ボタンに書き換え
         // id変更
-        document.getElementById('start').innerHTML = '<img src="./images/start.png"  alt="スタートボタン" height="25" width="25">';
+        document.getElementById('start').innerHTML = '<img class="btns" src="./images/start.png"  alt="スタートボタン"><p>スタート／ストップ</p>';
         // ゼロパディング
         zero_sec = zeroPadding(0,2)
         zero_min = zeroPadding(0,2)
