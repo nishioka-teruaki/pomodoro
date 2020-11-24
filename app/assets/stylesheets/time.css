@@ -1,0 +1,37 @@
+/* メイン部分 */
+.wrapper {
+  display: flex;
+}
+
+/* サイドバー部分 */
+.side-bar {
+  background-color: #ffffff;
+  width: 300px;
+  height: calc(100vh - 110px);
+  padding: 10px 20px 0px;
+  overflow: scroll;
+}
+
+/* 時間部分 */
+.contents{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: calc(100vh - 110px);
+  width: calc(100vw - 300px);
+  color: #ffffff;
+}
+
+.box1{
+  font-size: 100px;
+}
+
+.box2{
+  font-size: 30px;
+}
+
+.time {
+  background-color: #9ed6eb;
+  padding: 0 20px;
+}

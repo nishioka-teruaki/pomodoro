@@ -1,40 +1,8 @@
 <div class="wrapper">
-  <%= render "side_bar" %>
-  <%= render "main_time" %>
-</div>
-
-<div class="upper_contents">
-  <div class="box1">
-    <span id="month_day"> </span><span class="time" id="pomo_number">0</span>
-    <span>ポモドーロ</span>
+  <div class="side-bar">
+    <%= render "side_bar" %>
   </div>
-  <div class="box2">
-    <p class="time">
-      00:
-      <span id="min">00</span>:
-      <span id="sec">00</span>
-    </p>
+  <div class="time">
+    <%= render "main_time" %>
   </div>
 </div>
-
-<div class="img_btn">
-  <div class="div_btn">
-    <button id="task" class="btn task_btn" type="button">作業</button>
-    <button id="break" class="btn break_btn" type="button">休憩</button>
-  </div>
-  <div id="start"><img src="/images/start.png" alt="スタートボタン" height="25" width="25"></div>
-  <div id="stop"><img src="/images/stop.png" alt="ストップボタン" height="25" width="25"></div>
-</div>
-
-<audio src="audios/WaveSound.mp3" loop id="workbgm1">
-  <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
-</audio>
-<audio id="alarm1" src="audios/alarm1.mp3">
-  <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
-</audio>
-<audio src="audios/kibitaki.mp3" loop id="break1">
-  <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
-</audio>
-
-<%# <input type="button" value="音量↑" id="upvolume">
-<input type="button" value="音量↓" id="downvolume"> %>

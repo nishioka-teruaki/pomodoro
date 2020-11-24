@@ -8,12 +8,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #a9b0b3;
 }
 
 .header_title_c{
   color: #57C3E9;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 25px;
   font-weight:  200;
   margin-left: 10px;
 }
@@ -36,6 +37,8 @@
   color: #a9b0b3;
   display: flex;
   justify-content: center;
+  padding-top: 10px;
+  border-top: 1px solid #a9b0b3;
 }
 
 .copyright{
