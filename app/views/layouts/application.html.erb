@@ -4,7 +4,7 @@
     <title>Pomodoro</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%# フォント追加 %>
@@ -15,6 +15,8 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <%# Androidでタブの色を変更 %>
     <meta name="theme-color" content="#378586">
+    <%# リセットCSS読み込み %>
+    <link rel="stylesheet" href="./app/assets/stylesheets/reset.css">
   </head>
 
   <body>
