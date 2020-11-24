@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
+@import url('https://fonts.googleapis.com/earlyaccess/notosansjapanese.css');
+
 /* メイン部分全体 */
 .wrapper {
   display: flex;
@@ -10,6 +13,7 @@
   height: calc(100vh - 110px);
   padding: 20px 15px 0px;
   overflow: scroll;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 .img_btn_start{
@@ -56,6 +60,7 @@
   height: calc(100vh - 110px);
   width: calc(100vw - 300px);
   color: #ffffff;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 .box1{

@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
 @import url('https://fonts.googleapis.com/earlyaccess/notosansjapanese.css');
 
 /* ヘッダー */
 .header_bar{
   height: 60px;
   width: 100%;
-  font-family: "Noto Sans Japanese";
+  font-family: 'M PLUS 1p', sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,17 +13,18 @@
 }
 
 .header_title_c{
-  color: #57C3E9;
+  color: #1fbef3;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 26px;
   font-weight:  200;
   margin-left: 10px;
 }
 
 .explanation{
-  color: #57C3E9;
+  color: #1fbef3;
   font-size: 15px;
-  font-weight:  200;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight:  500;
 }
 
 .header_menu_c{
@@ -40,11 +42,12 @@
 .footer_bar{
   height: 50px;
   width: 100%;
-  color: #a9b0b3;
+  color: #606568;
   display: flex;
   justify-content: center;
   padding-top: 10px;
   border-top: 1px solid #a9b0b3;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 /* タブレット対応 */
