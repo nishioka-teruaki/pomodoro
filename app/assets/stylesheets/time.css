@@ -9,7 +9,7 @@
 .side_main {
   background-color: #ffffff;
   width: 300px;
-  height: calc(100vh - 110px);
+  height: calc(100% - 110px);
   padding: 20px 15px 0px;
   font-family: 'Noto Sans JP', sans-serif;
 }
@@ -46,9 +46,6 @@
   margin: 0px 10px 15px 0px;
 }
 
-.note{
-  font-size: 17px;
-}
 /* 時間部分 */
 .contents{
   display: flex;
