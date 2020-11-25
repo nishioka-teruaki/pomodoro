@@ -39,6 +39,16 @@
   font-family: 'Noto Sans JP', sans-serif;
 }
 
+.container {
+  height: 150px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;    /* IE, Edge 対応 */
+  scrollbar-width: none;       /* Firefox 対応 */
+}
+.container::-webkit-scrollbar {  /* Chrome, Safari 対応 */
+  display:none;
+}
+
 /* フッター */
 .footer_bar{
   height: 50px;
