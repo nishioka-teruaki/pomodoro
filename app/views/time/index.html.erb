@@ -1,8 +1,21 @@
-<div class="wrapper">
-  <div class="side_bar">
-    <%= render "side_bar" %>
+<div class="center">
+<%# <input type="button" id="btn" value='click me'> %>
+  <%# サイドバーと時間部分 %>
+  <div class="wrapper">
+    <div class="side_bar">
+      <%= render "side_bar" %>
+    </div>
+    <div class="time">
+      <%= render "main_time" %>
+    </div>
   </div>
-  <div class="time">
-    <%= render "main_time" %>
+  <%# 初アクセスのモーダルウィンドウ %>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h1>当サイトは音が流れますので外でのご使用時はお気をつけください</h1>
+        <input type="button" id="closeBtn" value="close">
+      </div>
+    </div>
   </div>
 </div>

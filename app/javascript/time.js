@@ -1,5 +1,39 @@
-window.alert("当サイトは音が流れますので外でのご使用時はお気をつけください")
 window.addEventListener('load', function(){
+
+  // 初回ログイン判定
+  //Cookie取得
+  var checkCookie = document.cookie;
+  //Cookie内に【syokai】という文字列があるかないか判定。
+  if(checkCookie.match("syokai")){
+  // 2回目の訪問したときの処理（コンソールに出力のみ）
+    console.log("2回目以上の訪問です")
+    
+  // 1回目の訪問したときの処理（クッキーに書き込みと１回目の処理）
+  }else{
+    //Domain名取得
+    var domain = document.domain;
+    //Cookieの内容を格納
+    var visitorCookie = "visitorCookie=syokai; domain="+domain+"; path=/;"
+    //Cookieに書き込み
+    document.cookie = visitorCookie;
+    // モーダルウィンドウ表示
+    // var btn = document.getElementById('btn');
+    var modal = document.getElementById('modal');
+    modal.style.display = 'block';
+    // モーダルウィンドウのクローズ
+    var closeBtn = document.getElementById('closeBtn');
+    closeBtn.addEventListener('click', function() {
+      modal.style.display = 'none';
+    })
+    // モーダルウィンドウのクローズ（外側をクリック時）
+    window.addEventListener('click', function(e) {
+      if (e.target == modal) {
+        modal.style.display = 'none';
+      }
+    })
+  }
+
+  // タイマー処理
   let click_task = 0
     // 0...初期値
     // 1...作業ボタン
@@ -58,18 +92,18 @@ window.addEventListener('load', function(){
   }
 
   // 休憩ボタンがクリックされたとき
-document.getElementById('break').onclick = function() {
-  // 休憩ボタンが押されていないときもしくは作業ボタンしか押されていないとき
-  if (click_task == 0 || click_task == 1) {
-      // タイマー初期値セット
-      document.getElementById('min').textContent = zeroPadding(5, 2);
-      document.getElementById('sec').textContent = zeroPadding(0, 2);
-      // ５分をセット ６０秒×５分=３００
-      time = 300;
-      // 休憩ボタンが押されたフラグ
-      click_task = 2;
+  document.getElementById('break').onclick = function() {
+    // 休憩ボタンが押されていないときもしくは作業ボタンしか押されていないとき
+    if (click_task == 0 || click_task == 1) {
+        // タイマー初期値セット
+        document.getElementById('min').textContent = zeroPadding(5, 2);
+        document.getElementById('sec').textContent = zeroPadding(0, 2);
+        // ５分をセット ６０秒×５分=３００
+        time = 300;
+        // 休憩ボタンが押されたフラグ
+        click_task = 2;
+    }
   }
-}
 
   // スタートボタンが押下された時の処理
   document.getElementById('start').onclick = function() {
@@ -209,3 +243,4 @@ document.getElementById('break').onclick = function() {
     }
   }
 })
+

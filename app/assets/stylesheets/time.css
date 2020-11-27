@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
 
 /* メイン部分全体 */
+.center{
+}
+
+/* サイドバーと時間部分 */
 .wrapper {
   display: flex;
 }
@@ -69,4 +73,23 @@
 .time {
   background-color: #9ed6eb;
   padding: 0 20px;
+}
+
+/* モーダルウィンドウ */
+.modal {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+  
+.modal-content{
+  background-color: white;
+  width: 500px;
+  margin: 250px auto;
 }
