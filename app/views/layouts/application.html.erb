@@ -14,18 +14,34 @@
   </head>
 
   <body>
-      <header class="header">
-        <div class="header_bar">
-          <div class="header_title"><a class="header_title_c" href="/">Pomodoroアプリ</a></div>
-          <div class="explanation"><p>~人間の集中力が高く発揮されると言われているポモドーロタイマー（25分作業→5分休憩）を測れるアプリです~</p></div>
-          <div class="header_menu"><a class="header_menu_c" href="/">メニュー</a></div>
+    <header class="header">
+      <div class="header_bar">
+        <div class="header_title"><a class="header_title_c" href="/">Pomodoroアプリ</a></div>
+        <div class="explanation"><p>~人間の集中力が高く発揮されると言われているポモドーロタイマー（25分作業→5分休憩）を測れるアプリです~</p></div>
+        <div class="header_menu"><a class="header_menu_c" href="/">メニュー</a></div>
+      </div>
+      <%# 初アクセスのモーダルウィンドウ %>
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <div class="model_text1">
+            <h1 >〜ご注意〜</h1>
+          </div>
+          <div class="model_text2">
+            <p>当サイトは音が流れますので外でのご使用時はお気をつけください。</p>
+          </div>
+          <div class="modal_button">
+            <input type="button" id="closeBtn" value="close">
+          </div>
         </div>
-      </header>
+      </div>
+    </header>
+
     <%= yield %>
-      <footer>
-        <div class="footer_bar">
-          <div class="copyright"><p >Copyright 2020. Pomodoroアプリ</p></div>
-        </div>
-      </footer>
+
+    <footer>
+      <div class="footer_bar">
+        <div class="copyright"><p >Copyright 2020. Pomodoroアプリ</p></div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,34 +1,18 @@
-<div class="side_main">
-  <div class="img_btn">
-    <div id="start" class="img_btn_start">
-      <img class="btns" src="/images/start.png" alt="スタートボタン">
-      <p>スタート／一時停止</p>
-    </div>
-    <div id="stop" class="img_btn_stop">
-      <img class="btns" src="/images/stop.png" alt="ストップボタン">
-      <p>停止／時間リセット</p>
-    </div>
-  </div>
-  <div class="div_btn">
-    <div class="div_task">
-      <button id="task" class="div_task_btn" type="button">作業</button><p>25分をセット</p>
-    </div>
-    <div class="div_break">
-      <button id="break" class="div_break_btn" type="button">休憩</button><p>5分をセット</p>
-    </div>
-  </div>
+<%# ボタン部分 %>
+<div id="start" class="img_btn_start">
+  <img class="btns" src="/images/start.png" alt="スタートボタン">
+  <p class="p_side">スタート／一時停止</p>
 </div>
-
-<%# 音楽部分 %>
-<audio src="audios/WaveSound.mp3" loop id="workbgm1">
-  <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
-</audio>
-<audio id="alarm1" src="audios/alarm1.mp3">
-  <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
-</audio>
-<audio src="audios/kibitaki.mp3" loop id="break1">
-  <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
-</audio>
-
-<%# <input type="button" value="音量↑" id="upvolume">
-<input type="button" value="音量↓" id="downvolume"> %>
+<div id="stop" class="img_btn_stop">
+  <img class="btns" src="/images/stop.png" alt="ストップボタン">
+  <p class="p_side">停止／時間リセット</p>
+</div>
+<%# 時間セット部分 %>
+<div class="div_task">
+  <button id="task" class="div_task_btn" type="button">作業</button>
+  <p class="p_side">25分をセット</p>
+</div>
+<div class="div_break">
+  <button id="break" class="div_break_btn" type="button">休憩</button>
+  <p class="p_side">5分をセット</p>
+</div>

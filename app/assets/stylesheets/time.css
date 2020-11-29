@@ -1,23 +1,29 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
 
-/* メイン部分全体 */
-.center{
-}
-
 /* サイドバーと時間部分 */
 .wrapper {
   display: flex;
 }
 
 /* サイドバー部分 */
-.side_main {
-  background-color: #ffffff;
+.side_bar{
+  background-color: #75c3df;
+  color: #ffffff;
   width: 300px;
   height: calc(100% - 110px);
-  padding: 20px 15px 0px;
+  position: absolute;
   font-family: 'Noto Sans JP', sans-serif;
+  overflow: auto;
+  border-right: solid 1px #ffffff;
+  padding: 10px;
 }
-
+/* サイドバーの文字部分 */
+.p_side{
+  margin: 10px;
+  font-size: 20px;
+  font-weight: 200;
+}
+/* ボタン部分 */
 .img_btn_start{
   display: flex;
 }
@@ -29,16 +35,15 @@
 .btns{
   height: 30px;
   width: 30px;
-  margin: 0px 10px 15px 0px;
+  margin: 10px;
 }
-
+/* 時間セット部分 */
 .div_task{
   display: flex;
 }
 
 .div_task_btn{
-  font-size: large;
-  margin: 0px 10px 15px 0px;
+  margin: 10px;
 }
 
 .div_break{
@@ -46,50 +51,29 @@
 }
 
 .div_break_btn{
-  font-size: large;
-  margin: 0px 10px 15px 0px;
+  margin: 10px;
 }
 
 /* 時間部分 */
-.contents{
+.time_contents{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: calc(100vh - 110px);
-  width: calc(100vw - 300px);
+  width: calc(100% - 300px);
+  height: calc(100% - 110px);
+  position: absolute;
+  left: 300px;
   color: #ffffff;
   font-family: 'Noto Sans JP', sans-serif;
+  background-color: #75c3df;
 }
 
 .box1{
-  font-size: 100px;
+  font-size: 180px;
 }
 
 .box2{
   font-size: 30px;
 }
 
-.time {
-  background-color: #9ed6eb;
-  padding: 0 20px;
-}
-
-/* モーダルウィンドウ */
-.modal {
-  display: none;
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.5);
-}
-  
-.modal-content{
-  background-color: white;
-  width: 500px;
-  margin: 250px auto;
-}

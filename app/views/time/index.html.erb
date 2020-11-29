@@ -1,21 +1,23 @@
-<div class="center">
-<%# <input type="button" id="btn" value='click me'> %>
-  <%# サイドバーと時間部分 %>
-  <div class="wrapper">
-    <div class="side_bar">
-      <%= render "side_bar" %>
-    </div>
-    <div class="time">
-      <%= render "main_time" %>
-    </div>
+<%# サイドバーと時間部分 %>
+<div class="wrapper">
+  <div class="side_bar">
+    <%= render "side_bar" %>
   </div>
-  <%# 初アクセスのモーダルウィンドウ %>
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-body">
-        <h1>当サイトは音が流れますので外でのご使用時はお気をつけください</h1>
-        <input type="button" id="closeBtn" value="close">
-      </div>
-    </div>
+  <div class="time_contents">
+    <%= render "main_time" %>
   </div>
 </div>
+
+<%# 音楽部分 %>
+<audio src="audios/WaveSound.mp3" loop id="workbgm1">
+  <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
+</audio>
+<audio id="alarm1" src="audios/alarm1.mp3">
+  <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
+</audio>
+<audio src="audios/kibitaki.mp3" loop id="break1">
+  <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
+</audio>
+
+<%# <input type="button" value="音量↑" id="upvolume">
+<input type="button" value="音量↓" id="downvolume"> %>

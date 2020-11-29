@@ -139,7 +139,7 @@ window.addEventListener('load', function(){
             }
             // 再生ボタンを一時停止ボタンに書き換え
             // id変更
-            document.getElementById('start').innerHTML = '<img class="btns" src="./images/temporary.png" alt="一時停止"><p>スタート／ストップ</p>';
+            document.getElementById('start').innerHTML = '<img class="btns" src="./images/temporary.png" alt="一時停止"><p class="p_side">スタート／ストップ</p>';
             // カウント関数を１秒毎に動かす 変数に入れる
             counter = setInterval(count, 1000);
 
@@ -149,7 +149,7 @@ window.addEventListener('load', function(){
             click_num = 0;
             // 一時停止ボタンを再生ボタンに書き換え
             // id変更
-            document.getElementById('start').innerHTML = '<img class="btns" src="./images/start.png" alt="スタートボタン"><p>スタート／ストップ</p>';
+            document.getElementById('start').innerHTML = '<img class="btns" src="./images/start.png" alt="スタートボタン"><p class="p_side">スタート／ストップ</p>';
             // 作業用BGMの一時停止
             audio1.pause();
             // 休憩BGMの（一時）停止
@@ -180,7 +180,7 @@ window.addEventListener('load', function(){
     document.getElementById('min').textContent = zero_min;
     // 一時停止ボタンを再生ボタンに書き換え
     // id変更
-    document.getElementById('start').innerHTML = '<img class="btns" src="./images/start.png"  alt="スタートボタン"><p>スタート／ストップ</p>';
+    document.getElementById('start').innerHTML = '<img class="btns" src="./images/start.png"  alt="スタートボタン"><p class="p_side">スタート／ストップ</p>';
     // 作業用BGMの（一時）停止
     audio1.pause();
     // 休憩BGMの（一時）停止
@@ -225,7 +225,7 @@ window.addEventListener('load', function(){
         clearInterval(counter);
         // 一時停止ボタンを再生ボタンに書き換え
         // id変更
-        document.getElementById('start').innerHTML = '<img class="btns" src="./images/start.png"  alt="スタートボタン"><p>スタート／ストップ</p>';
+        document.getElementById('start').innerHTML = '<img class="btns" src="./images/start.png"  alt="スタートボタン"><p class="p_side">スタート／ストップ</p>';
         // ゼロパディング
         zero_sec = zeroPadding(0,2)
         zero_min = zeroPadding(0,2)
