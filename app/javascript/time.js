@@ -57,20 +57,18 @@ window.addEventListener('load', function(){
   var audio2 = document.getElementById("alarm1");
   // 休憩中BGM
   var audio3 = document.getElementById("break1");
-  // BGMを纏める
-  var a = audio1 + audio2 + audio3
 
-  // // 音量を上げる
-  // var uv = document.getElementById("upvolume")
-  // uv.addEventListener('click', function(){
-  //   a.volume = a.volume + 0.25;
-  // }
-  
-  // // 音量を下げる
-  // var dv = document.getElementById("downvolume")
-  // dv.xaddEventListener('click', function(){
-  //   a.volume = a.volume - 0.25;
-  // }
+  //audioの全体音量0.5(=50%)
+  const audios=document.getElementsByTagName('audio');
+  for(let n=0; audios.length>n; n++){ audios[n].volume = 0.5; }
+  // audioの音量アップ
+  document.getElementById('upvolume').onclick = function() {
+    for(let n=0; audios.length>n; n++){audios[n].volume = audios[n].volume + 0.1;}
+  }
+  // audioの音量ダウン
+  document.getElementById('downvolume').onclick = function() {
+    for(let n=0; audios.length>n; n++){audios[n].volume = audios[n].volume - 0.1;}
+  }
 
   // 作業ボタンがクリックされたとき
   document.getElementById('task').onclick = function() {
