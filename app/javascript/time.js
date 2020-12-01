@@ -62,13 +62,24 @@ window.addEventListener('load', function(){
   const audios=document.getElementsByTagName('audio');
   for(let n=0; audios.length>n; n++){ audios[n].volume = 0.5; }
   // audioの音量アップ
-  document.getElementById('upvolume').onclick = function() {
-    for(let n=0; audios.length>n; n++){audios[n].volume = audios[n].volume + 0.1;}
-  }
+  // document.getElementById('upvolume').onclick = function() {for(let n=0; audios.length>n; n++){audios[n].volume = audios[n].volume + 0.1;}}
   // audioの音量ダウン
-  document.getElementById('downvolume').onclick = function() {
-    for(let n=0; audios.length>n; n++){audios[n].volume = audios[n].volume - 0.1;}
+  // document.getElementById('downvolume').onclick = function() {for(let n=0; audios.length>n; n++){audios[n].volume = audios[n].volume - 0.1;}}
+  // audioのバー
+  const inputElem = document.getElementById('volume_bar'); // input要素
+  const currentValueElem = document.getElementById('current-value'); // 埋め込む先のspan要素
+  // 現在の値をspanに埋め込む関数
+  const setCurrentValue = (val) => {
+    currentValueElem.innerText = val;
   }
+  // inputイベント時に値をセットする関数
+  const rangeOnChange = (e) =>{
+    setCurrentValue(e.target.value);
+    for(let n=0; audios.length>n; n++){audios[n].volume = e.target.value;}
+  }
+  inputElem.addEventListener('input', rangeOnChange); // スライダー変化時にイベントを発火
+  setCurrentValue(inputElem.value); // ページ読み込み時に値をセット
+  // inputElem.removeEventListener('input', rangeOnChange); //SPAでaddEventListenerを使うとき
 
   // 作業ボタンがクリックされたとき
   document.getElementById('task').onclick = function() {
