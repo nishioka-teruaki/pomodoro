@@ -26,10 +26,12 @@
 /* ボタン部分 */
 .img_btn_start{
   display: flex;
+  align-items: center;
 }
 
 .img_btn_stop{
   display: flex;
+  align-items: center;
 }
 
 .btns{
@@ -40,6 +42,7 @@
 /* 時間セット部分 */
 .div_task{
   display: flex;
+  align-items: center;
 }
 
 .div_task_btn{
@@ -48,10 +51,52 @@
 
 .div_break{
   display: flex;
+  align-items: center;
 }
 
 .div_break_btn{
   margin: 10px;
+}
+
+/* ボリューム部分 */
+.volume_box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+
+.input-range[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  height: 5px;
+  width: 70%;
+  border-radius: 6px;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    border: 2px solid rgba(0, 0, 0, .7);
+    width: 22px;
+    height: 22px;
+    display: block;
+    background-color: #fff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+  }
+
+  &:active::-webkit-slider-thumb {
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, .6);
+    transition: .4s;
+  }
 }
 
 /* 時間部分 */

@@ -69,16 +69,14 @@ window.addEventListener('load', function(){
   const inputElem = document.getElementById('volume_bar'); // input要素
   const currentValueElem = document.getElementById('current-value'); // 埋め込む先のspan要素
   // 現在の値をspanに埋め込む関数
-  const setCurrentValue = (val) => {
-    currentValueElem.innerText = val;
-  }
+  // const setCurrentValue = (val) => {currentValueElem.innerText = val;}
   // inputイベント時に値をセットする関数
   const rangeOnChange = (e) =>{
-    setCurrentValue(e.target.value);
+    // setCurrentValue(e.target.value); // 現在のボリュームの表示更新
     for(let n=0; audios.length>n; n++){audios[n].volume = e.target.value;}
   }
   inputElem.addEventListener('input', rangeOnChange); // スライダー変化時にイベントを発火
-  setCurrentValue(inputElem.value); // ページ読み込み時に値をセット
+  // setCurrentValue(inputElem.value); // ページ読み込み時に値をセット
   // inputElem.removeEventListener('input', rangeOnChange); //SPAでaddEventListenerを使うとき
 
   // 作業ボタンがクリックされたとき
