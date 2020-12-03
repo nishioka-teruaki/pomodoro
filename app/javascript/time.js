@@ -57,8 +57,10 @@ window.addEventListener('load', function(){
   var audio2 = document.getElementById("alarm1");
   // 休憩中BGM
   var audio3 = document.getElementById("break1");
-  // 時報BGM
+  // 時報BGM（3秒カウント）
   var audio4 = document.getElementById("zihou1");
+  // 時報BGM（単発）
+  var audio5 = document.getElementById("zihou2");
 
   //audioの全体音量0.5(=50%)
   const audios=document.getElementsByTagName('audio');
@@ -81,36 +83,70 @@ window.addEventListener('load', function(){
   // setCurrentValue(inputElem.value); // ページ読み込み時に値をセット
   // inputElem.removeEventListener('input', rangeOnChange); //SPAでaddEventListenerを使うとき
 
+  // ゼロパディング関数
+  function zeroPadding(num,length){
+    return ('00' + num).slice(-length);
+  }
+
+  // 背景色の変更関数
+  // 赤
+  function backRed() {
+    sideColor = document.getElementById("side");
+    mainColor = document.getElementById("time");
+    sideColor.style.backgroundColor = "#df7575";
+    mainColor.style.backgroundColor = "#df7575";
+  }
+  // 黄
+  function backYellow() {
+    sideColor = document.getElementById("side");
+    mainColor = document.getElementById("time");
+    sideColor.style.backgroundColor = "#dddf75";
+    mainColor.style.backgroundColor = "#dddf75";
+  }
+  // 緑
+  function backGreen() {
+    sideColor = document.getElementById("side");
+    mainColor = document.getElementById("time");
+    sideColor.style.backgroundColor = "#82df75";
+    mainColor.style.backgroundColor = "#82df75";
+  }
+  // 青
+  function backBlue() {
+    sideColor = document.getElementById("side");
+    mainColor = document.getElementById("time");
+    sideColor.style.backgroundColor = "#75c3df";
+    mainColor.style.backgroundColor = "#75c3df";
+  }
+
   // 作業ボタンがクリックされたとき
   document.getElementById('task').onclick = function() {
     // 作業ボタンが押されていないときもしくは休憩ボタンしか押されていないとき
     if (click_task == 0 || click_task == 2) {
-        // タイマー初期値セット
-        document.getElementById('min').textContent = zeroPadding(25, 2);
-        document.getElementById('sec').textContent = zeroPadding(0, 2);
-        // ２５分をセット ６０秒×２５分=１５００
-        time = 1500;
-        // 作業ボタンが押されたフラグ
-        click_task = 1;
+      // タイマー初期値セット
+      document.getElementById('min').textContent = zeroPadding(25, 2);
+      document.getElementById('sec').textContent = zeroPadding(0, 2);
+      // ２５分をセット ６０秒×２５分=１５００
+      time = 1500;
+      // 作業ボタンが押されたフラグ
+      click_task = 1;
+      // 背景を青色へ
+      backBlue();
     }
-  }
-
-  // ゼロパディング関数
-  function zeroPadding(num,length){
-    return ('00' + num).slice(-length);
   }
 
   // 休憩ボタンがクリックされたとき
   document.getElementById('break').onclick = function() {
     // 休憩ボタンが押されていないときもしくは作業ボタンしか押されていないとき
     if (click_task == 0 || click_task == 1) {
-        // タイマー初期値セット
-        document.getElementById('min').textContent = zeroPadding(5, 2);
-        document.getElementById('sec').textContent = zeroPadding(0, 2);
-        // ５分をセット ６０秒×５分=３００
-        time = 300;
-        // 休憩ボタンが押されたフラグ
-        click_task = 2;
+      // タイマー初期値セット
+      document.getElementById('min').textContent = zeroPadding(5, 2);
+      document.getElementById('sec').textContent = zeroPadding(0, 2);
+      // ５分をセット ６０秒×５分=３００
+      time = 300;
+      // 休憩ボタンが押されたフラグ
+      click_task = 2;
+      // 背景を緑色へ
+      backGreen();
     }
   }
 
@@ -194,6 +230,8 @@ window.addEventListener('load', function(){
     audio1.pause();
     // 休憩BGMの（一時）停止
     audio3.pause();
+    // 背景を青色へ
+    backBlue();
   }
 
   // カウント関数
@@ -216,6 +254,8 @@ window.addEventListener('load', function(){
         pomo_num++;
         // ポモドーロ数を画面に出力
         document.getElementById('pomo_number').textContent = pomo_num;
+        // 背景を緑色へ
+        backGreen();
       }
 
       // 休憩ボタンが押されてカウントダウンが始まったとき
@@ -225,6 +265,8 @@ window.addEventListener('load', function(){
         audio3.pause();
         // アラームの再生
         audio2.play();
+        // 背景を青色へ
+        backBlue();
       }
       // スタート/ストップのフラグ初期化
       click_num = 0;
@@ -251,16 +293,23 @@ window.addEventListener('load', function(){
       // 分は時間を６０で割ったもの小数点以下切り捨て
       document.getElementById('min').textContent = zeroPadding(Math.floor(time / 60), 2);
       // もし時間が3秒前なら
+      if (time == 60) {
+        // 背景を黄色へ
+        backYellow();
+        audio5.play();
+      }
       if (time == 3) {
+        // 背景を赤色へ
+        backRed()
         // 作業ボタンが押されてカウントダウンが始まったときのラストカウントダウン
         if (click_task == 5) {
-          audio1.pause()
+          audio1.pause();
           // 時報の再生
           audio4.play();
         }
         // 休憩ボタンが押されてカウントダウンが始まったときのラストカウントダウン
         if (click_task == 7) {
-          audio3.pause()
+          audio3.pause();
           // 時報の再生
           audio4.play();
         }
