@@ -57,6 +57,8 @@ window.addEventListener('load', function(){
   var audio2 = document.getElementById("alarm1");
   // 休憩中BGM
   var audio3 = document.getElementById("break1");
+  // 時報BGM
+  var audio4 = document.getElementById("zihou1");
 
   //audioの全体音量0.5(=50%)
   const audios=document.getElementsByTagName('audio');
@@ -116,58 +118,58 @@ window.addEventListener('load', function(){
   document.getElementById('start').onclick = function() {
     // 休憩ボタンもしくは作業ボタンが押下されたとき
     if (click_task != 0) {
-        // タイマーがストップ状態の時
-        if (click_num == 0) {
-            // スタート状態を表すフラグ
-            click_num = 1;
-            // 作業ボタンが押されてカウントダウンが始まったとき
-            if (click_task == 1) {
-                // フラグ再セット
-                click_task = 5;
-                // 作業用BGMの再生
-                audio1.play();
-            }
-            // 休憩ボタンがボタンが押されてカウントダウンが始まったとき
-            if (click_task == 2) {
-                // フラグ再セット
-                click_task = 7;
-                // 休憩用BGMの再生
-                audio3.play();
-            }
-            // 作業ボタンが押されてて一時停止が解除された時
-            if (click_task == 5) {
-              // 作業用BGMの再生
-              audio1.play();
-            }
-            // 休憩ボタンが押されてて一時停止が解除された時
-            if (click_task == 7) {
-              // 休憩用BGMの再生
-              audio3.play();
-            }
-            // 再生ボタンを一時停止ボタンに書き換え
-            // id変更
-            document.getElementById('start').innerHTML = '<img class="btns" src="./images/temporary.png" alt="一時停止"><p class="p_side">スタート／ストップ</p>';
-            // カウント関数を１秒毎に動かす 変数に入れる
-            counter = setInterval(count, 1000);
-
-            // 一時停止ボタンが押された時の処理
-        } else {
-            // ストップ状態を表すフラグ
-            click_num = 0;
-            // 一時停止ボタンを再生ボタンに書き換え
-            // id変更
-            document.getElementById('start').innerHTML = '<img class="btns" src="./images/start.png" alt="スタートボタン"><p class="p_side">スタート／ストップ</p>';
-            // 作業用BGMの一時停止
-            audio1.pause();
-            // 休憩BGMの（一時）停止
-            audio3.pause();
-            // カウント関数をストップ
-            clearInterval(counter); 
-            // 秒は時間を６０で割った余り
-            document.getElementById('sec').textContent = zeroPadding(time % 60, 2);
-            // 分は時間を６０で割ったもの 小数点以下切り捨て
-            document.getElementById('min').textContent = zeroPadding(Math.floor(time / 60), 2);
+      // タイマーがストップ状態の時
+      if (click_num == 0) {
+        // スタート状態を表すフラグ
+        click_num = 1;
+        // 作業ボタンが押されてカウントダウンが始まったとき
+        if (click_task == 1) {
+            // フラグ再セット
+            click_task = 5;
+            // 作業用BGMの再生
+            audio1.play();
         }
+        // 休憩ボタンがボタンが押されてカウントダウンが始まったとき
+        if (click_task == 2) {
+            // フラグ再セット
+            click_task = 7;
+            // 休憩用BGMの再生
+            audio3.play();
+        }
+        // 作業ボタンが押されてて一時停止が解除された時
+        if (click_task == 5) {
+          // 作業用BGMの再生
+          audio1.play();
+        }
+        // 休憩ボタンが押されてて一時停止が解除された時
+        if (click_task == 7) {
+          // 休憩用BGMの再生
+          audio3.play();
+        }
+        // 再生ボタンを一時停止ボタンに書き換え
+        // id変更
+        document.getElementById('start').innerHTML = '<img class="btns" src="./images/temporary.png" alt="一時停止"><p class="p_side">スタート／ストップ</p>';
+        // カウント関数を１秒毎に動かす 変数に入れる
+        counter = setInterval(count, 1000);
+
+        // 一時停止ボタンが押された時の処理
+      } else {
+        // ストップ状態を表すフラグ
+        click_num = 0;
+        // 一時停止ボタンを再生ボタンに書き換え
+        // id変更
+        document.getElementById('start').innerHTML = '<img class="btns" src="./images/start.png" alt="スタートボタン"><p class="p_side">スタート／ストップ</p>';
+        // 作業用BGMの（一時）停止
+        audio1.pause();
+        // 休憩BGMの（一時）停止
+        audio3.pause();
+        // カウント関数をストップ
+        clearInterval(counter); 
+        // 秒は時間を６０で割った余り
+        document.getElementById('sec').textContent = zeroPadding(time % 60, 2);
+        // 分は時間を６０で割ったもの 小数点以下切り捨て
+        document.getElementById('min').textContent = zeroPadding(Math.floor(time / 60), 2);
+      }
     }
   }
 
@@ -198,55 +200,71 @@ window.addEventListener('load', function(){
   function count() {
     // もし時間が０になったら
     if (time == 0) {
-        // 分を０にする
-        document.getElementById('sec').textContent = 0;
-        // 秒を０にする
-        document.getElementById('min').textContent = 0;
-        
-        // 作業ボタンが押されてカウントダウンが始まったとき
-        if (click_task == 5) {
-            // ２５分経過
-            // 作業BGMの（一時）停止
-            audio1.pause();
-            // アラームの再生
-            audio2.play();
-            // ポモドーロ数をプラス１させる
-            pomo_num++;
-            // ポモドーロ数を画面に出力
-            document.getElementById('pomo_number').textContent = pomo_num;
-        }
+      // 分を０にする
+      document.getElementById('sec').textContent = 0;
+      // 秒を０にする
+      document.getElementById('min').textContent = 0;
+      
+      // 作業ボタンが押されてカウントダウンが始まったとき
+      if (click_task == 5) {
+        // ２５分経過
+        // 作業BGMの（一時）停止
+        audio1.pause();
+        // アラームの再生
+        audio2.play();
+        // ポモドーロ数をプラス１させる
+        pomo_num++;
+        // ポモドーロ数を画面に出力
+        document.getElementById('pomo_number').textContent = pomo_num;
+      }
 
-        // 休憩ボタンが押されてカウントダウンが始まったとき
-        if (click_task == 7) {
-            // ５分経過
-            // 休憩BGMの（一時）停止
-            audio3.pause();
-            // アラームの再生
-            audio2.play();
-        }
-        // スタート/ストップのフラグ初期化
-        click_num = 0;
-        // タスクボタンのフラグ初期化
-        click_task = 0;
-        // スタートをクリックされた時の関数をストップ
-        clearInterval(counter);
-        // 一時停止ボタンを再生ボタンに書き換え
-        // id変更
-        document.getElementById('start').innerHTML = '<img class="btns" src="./images/start.png"  alt="スタートボタン"><p class="p_side">スタート／ストップ</p>';
-        // ゼロパディング
-        zero_sec = zeroPadding(0,2)
-        zero_min = zeroPadding(0,2)
-        // 画面の表示を初期値に戻す
-        document.getElementById('sec').textContent = zero_sec;
-        document.getElementById('min').textContent = zero_min;
-        // それ以外の処理
+      // 休憩ボタンが押されてカウントダウンが始まったとき
+      if (click_task == 7) {
+        // ５分経過
+        // 休憩BGMの（一時）停止
+        audio3.pause();
+        // アラームの再生
+        audio2.play();
+      }
+      // スタート/ストップのフラグ初期化
+      click_num = 0;
+      // タスクボタンのフラグ初期化
+      click_task = 0;
+      // スタートをクリックされた時の関数をストップ
+      clearInterval(counter);
+      // 一時停止ボタンを再生ボタンに書き換え
+      // id変更
+      document.getElementById('start').innerHTML = '<img class="btns" src="./images/start.png"  alt="スタートボタン"><p class="p_side">スタート／ストップ</p>';
+      // ゼロパディング
+      zero_sec = zeroPadding(0,2)
+      zero_min = zeroPadding(0,2)
+      // 画面の表示を初期値に戻す
+      document.getElementById('sec').textContent = zero_sec;
+      document.getElementById('min').textContent = zero_min;
+
+      // それ以外の処理
     } else {
-        // １秒ずつ減らしていく
-        time -= 1;
-        // 秒は時間を６０で割った余り
-        document.getElementById('sec').textContent = zeroPadding(time % 60, 2);
-        // 分は時間を６０で割ったもの小数点以下切り捨て
-        document.getElementById('min').textContent = zeroPadding(Math.floor(time / 60), 2);
+      // １秒ずつ減らしていく
+      time -= 1;
+      // 秒は時間を６０で割った余り
+      document.getElementById('sec').textContent = zeroPadding(time % 60, 2);
+      // 分は時間を６０で割ったもの小数点以下切り捨て
+      document.getElementById('min').textContent = zeroPadding(Math.floor(time / 60), 2);
+      // もし時間が3秒前なら
+      if (time == 3) {
+        // 作業ボタンが押されてカウントダウンが始まったときのラストカウントダウン
+        if (click_task == 5) {
+          audio1.pause()
+          // 時報の再生
+          audio4.play();
+        }
+        // 休憩ボタンが押されてカウントダウンが始まったときのラストカウントダウン
+        if (click_task == 7) {
+          audio3.pause()
+          // 時報の再生
+          audio4.play();
+        }
+      }
     }
   }
 })
