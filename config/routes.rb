@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  get 'time/index'
-  root to: "time#index"
+  root to: "times#destroy"
+  resources :times, only: [:index, :create, :destroy]
 end

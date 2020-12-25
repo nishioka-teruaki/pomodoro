@@ -17,45 +17,76 @@
   border-right: solid 1px #ffffff;
   padding: 10px;
 }
-/* サイドバーの文字部分 */
-.p_side{
+
+/* 曲の選択部分 */
+.music_workbgm{
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 200;
+}
+.workbgm-label{
+  margin: 10px;
+}
+.workbgm-select{
+  margin: 10px;
+}
+.music_breakbgm{
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 200;
+}
+.breakbgm-label{
+  margin: 10px;
+}
+.breakbgm-select{
+  margin: 10px;
+}
+.music_set{
   margin: 10px;
   font-size: 20px;
   font-weight: 200;
 }
-/* ボタン部分 */
-.img_btn_start{
-  display: flex;
-  align-items: center;
-}
 
-.img_btn_stop{
-  display: flex;
-  align-items: center;
-}
-
-.btns{
-  height: 30px;
-  width: 30px;
-  margin: 10px;
-}
 /* 時間セット部分 */
 .div_task{
   display: flex;
   align-items: center;
 }
-
 .div_task_btn{
   margin: 10px;
 }
-
 .div_break{
   display: flex;
   align-items: center;
 }
-
 .div_break_btn{
   margin: 10px;
+}
+
+/* 開始終了ボタン部分 */
+.img_btn_start{
+  display: flex;
+  align-items: center;
+}
+.img_btn_stop{
+  display: flex;
+  align-items: center;
+}
+.btns{
+  height: 30px;
+  width: 30px;
+  margin: 10px;
+}
+
+/* 時間セットと開始終了ボタンの文字部分 */
+.p_side{
+  margin: 10px;
+  font-size: 20px;
+  font-weight: 200;
 }
 
 /* ボリューム部分 */
@@ -116,9 +147,37 @@
 
 .box1{
   font-size: 180px;
+  margin: 10px;
 }
 
 .box2{
   font-size: 30px;
+  margin: 10px;
 }
 
+/* プルダウンメニューのデザイン */
+select::-ms-expand {
+  /* IEの矢印を非表示にするCSS */
+	display: none;
+}
+select {
+  /* IE以外の矢印を非表示にするCSS */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+  appearance: none;
+  /* select要素の余白と文字に関するCSS */
+	margin-bottom: 20px;
+	padding: 7px 30px 7px 10px;
+	font-size: 65%;
+  line-height: 1.1em;
+  /* select要素のボーダーに関するCSS */
+	border-radius: 5px;
+  border: none;
+  /* select要素の矢印アイコンのCS S */
+	background-image: url(/images/icon_arrow.png);
+	background-repeat: no-repeat;
+	background-size: 12px 10px;
+  background-position: right 10px center;
+  /* select要素の背景色を指定するCSS */
+	/* background-color: #bddfff; */
+}

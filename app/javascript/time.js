@@ -33,6 +33,32 @@ window.addEventListener('load', function(){
     })
   }
 
+  // 音楽の選択
+  const musicstart = document.querySelector(".img_btn_start");
+  musicstart.addEventListener("click", () => { 
+    const bgmbox = document.querySelector(".bgm_box");
+    var workbgmid = bgmbox.getAttribute("data-workbgmid");
+      if(workbgmid == 1) {
+        audio1 = document.getElementById("workbgm1");
+      }else if(workbgmid == 2) {
+        audio1 = document.getElementById("workbgm2");
+      }else if(workbgmid == 3) {
+        audio1 = document.getElementById("workbgm3");
+      }else {
+        audio1 = document.getElementById("muon");
+      }
+    var breakbgmid = bgmbox.getAttribute("data-breakbgmid");
+      if(breakbgmid == 1) {
+        audio3 = document.getElementById("break1");
+      }else if(breakbgmid == 2) {
+        audio3 = document.getElementById("break2");
+      }else if(breakbgmid == 3) {
+        audio3 = document.getElementById("break3");
+      }else {
+        audio3 = document.getElementById("muon");
+      }
+  });
+
   // タイマー処理
   let click_task = 0
     // 0...初期値
@@ -52,11 +78,11 @@ window.addEventListener('load', function(){
   let pomo_num = 0
 
   // 作業中BGM
-  var audio1 = document.getElementById("workbgm1");
+  // var audio1 = document.getElementById("workbgm1");
   // アラーム音
   var audio2 = document.getElementById("alarm1");
   // 休憩中BGM
-  var audio3 = document.getElementById("break1");
+  // var audio3 = document.getElementById("break1");
   // 時報BGM（3秒カウント）
   var audio4 = document.getElementById("zihou1");
   // 時報BGM（単発）
@@ -100,8 +126,8 @@ window.addEventListener('load', function(){
   function backYellow() {
     sideColor = document.getElementById("side");
     mainColor = document.getElementById("time");
-    sideColor.style.backgroundColor = "#dddf75";
-    mainColor.style.backgroundColor = "#dddf75";
+    sideColor.style.backgroundColor = "#df9c75";
+    mainColor.style.backgroundColor = "#df9c75";
   }
   // 緑
   function backGreen() {
@@ -292,12 +318,17 @@ window.addEventListener('load', function(){
       document.getElementById('sec').textContent = zeroPadding(time % 60, 2);
       // 分は時間を６０で割ったもの小数点以下切り捨て
       document.getElementById('min').textContent = zeroPadding(Math.floor(time / 60), 2);
-      // もし時間が3秒前なら
+      // もし時間が60秒前なら
       if (time == 60) {
         // 背景を黄色へ
         backYellow();
+        // 休憩BGMを一時止める（アラームが聞こえないため）
+        audio3.pause();
+        // 時報の再生
         audio5.play();
+        audio3.play();
       }
+      // もし時間が3秒前なら
       if (time == 3) {
         // 背景を赤色へ
         backRed()

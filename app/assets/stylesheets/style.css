@@ -101,6 +101,15 @@ footer{
   align-items: center;
 }
 
+.copyright{
+  display: flex;
+}
+
+.copyright_a{
+  text-decoration: none;
+  color: #606568;
+}
+
 /* タブレット対応 */
 /* @media (max-width: 1024px) {
 } */

@@ -1,0 +1,41 @@
+<%# 曲の選択 %>
+<%= form_with model: @music, url: times_path do |f| %>
+  <div class="music_workbgm">
+    <%= f.label :作業BGM, {class: 'workbgm-label'} %>
+    <%= f.collection_select(:workbgm_id, Workbgm.all, :id, :name, {}, {class:"workbgm-select"}) %>
+  </div>
+  <div class="music_breakbgm">
+    <%= f.label :休憩BGM, {class: 'breakbgm-label'} %>
+    <%= f.collection_select(:breakbgm_id, Breakbgm.all, :id, :name, {}, {class:"breakbgm-select"}) %>
+  </div>
+  <div class="music_set" id="music_set">
+    <%= f.submit "音楽をセットする", class:"music_btn" %>
+  </div>
+<% end %>
+
+<%# 時間セット部分 %>
+<div class="div_task">
+  <button id="task" class="div_task_btn" type="button">作業</button>
+  <p class="p_side">25分をセット</p>
+</div>
+<div class="div_break">
+  <button id="break" class="div_break_btn" type="button">休憩</button>
+  <p class="p_side">5分をセット</p>
+</div>
+
+<%# ボタン部分 %>
+<div id="start" class="img_btn_start">
+  <img class="btns" src="/images/start.png" alt="スタートボタン">
+  <p class="p_side">スタート／一時停止</p>
+</div>
+<div id="stop" class="img_btn_stop">
+  <img class="btns" src="/images/stop.png" alt="ストップボタン">
+  <p class="p_side">停止／時間リセット</p>
+</div>
+
+<%# 音量 %>
+<div class="volume_box">
+  <p>min</p>
+  <input type="range" class="input-range" min="0" max="1" step="0.1" value="0.5" id="volume_bar">
+  <p>max</p>
+</div>
