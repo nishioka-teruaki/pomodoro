@@ -19,7 +19,6 @@ class TimesController < ApplicationController
   end
 
   def create
-    binding.pry
     if user_signed_in?
       @music = Music.new(music_params)
     else
