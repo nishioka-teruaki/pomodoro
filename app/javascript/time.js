@@ -126,8 +126,8 @@ window.addEventListener('load', function(){
   function backYellow() {
     sideColor = document.getElementById("side");
     mainColor = document.getElementById("time");
-    sideColor.style.backgroundColor = "#df9c75";
-    mainColor.style.backgroundColor = "#df9c75";
+    sideColor.style.backgroundColor = "#dddf75";
+    mainColor.style.backgroundColor = "#dddf75";
   }
   // 緑
   function backGreen() {
