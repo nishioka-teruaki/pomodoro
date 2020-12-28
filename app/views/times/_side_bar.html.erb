@@ -1,18 +1,3 @@
-<%# 曲の選択 %>
-<%= form_with model: @music, url: times_path do |f| %>
-  <div class="music_workbgm">
-    <%= f.label :作業BGM, {class: 'workbgm-label'} %>
-    <%= f.collection_select(:workbgm_id, Workbgm.all, :id, :name, {}, {class:"workbgm-select"}) %>
-  </div>
-  <div class="music_breakbgm">
-    <%= f.label :休憩BGM, {class: 'breakbgm-label'} %>
-    <%= f.collection_select(:breakbgm_id, Breakbgm.all, :id, :name, {}, {class:"breakbgm-select"}) %>
-  </div>
-  <div class="music_set" id="music_set">
-    <%= f.submit "音楽をセットする", class:"music_btn" %>
-  </div>
-<% end %>
-
 <%# 時間セット部分 %>
 <div class="div_task">
   <button id="task" class="div_task_btn" type="button">作業</button>
@@ -39,3 +24,18 @@
   <input type="range" class="input-range" min="0" max="1" step="0.1" value="0.5" id="volume_bar">
   <p>max</p>
 </div>
+
+<%# 曲の選択 %>
+<%= form_with model: @music, url: times_path do |f| %>
+  <div class="music_workbgm">
+    <%= f.label :作業BGM, {class: 'workbgm-label'} %>
+    <%= f.collection_select(:workbgm_id, Workbgm.all, :id, :name, {selected: @selectmusic.workbgm_id}, {class:"workbgm-select"}) %>
+  </div>
+  <div class="music_breakbgm">
+    <%= f.label :休憩BGM, {class: 'breakbgm-label'} %>
+    <%= f.collection_select(:breakbgm_id, Breakbgm.all, :id, :name, {selected: @selectmusic.breakbgm_id}, {class:"breakbgm-select"}) %>
+  </div>
+  <div class="music_set" id="music_set">
+    <%= f.submit "音楽をセットする", class:"music_btn" %>
+  </div>
+<% end %>

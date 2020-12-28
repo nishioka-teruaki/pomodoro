@@ -18,8 +18,17 @@
       <div class="header_bar">
         <div class="header_title"><a class="header_title_c" href="/">Pomodoroアプリ</a></div>
         <div class="explanation"><p>~人間の集中力が高く発揮されると言われているポモドーロタイマー（25分作業→5分休憩）を測れるアプリです~</p></div>
-        <div class="header_menu"><a class="header_menu_c" href="/">メニュー</a></div>
-      </div>
+        <div class="header_menu">
+          <ul class='lists-right'>
+            <% if user_signed_in? %>
+              <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
+              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %> </li>
+            <% else %>
+              <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+              <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+            <% end %>
+          </ul>
+        </div>
       <%# 初アクセスのモーダルウィンドウ %>
       <div id="modal" class="modal">
         <div class="modal-content">
@@ -45,44 +54,6 @@
           <a class="copyright_a" href="https://pocket-se.info/">ポケットサウンド/効果音素材</a>
         </div>
       </div>
-
-    <%# 音楽部分 %>
-    <div class="bgm_box" data-workbgmid=<%= @selectmusic.workbgm_id %> data-breakbgmid=<%= @selectmusic.breakbgm_id %> >
-      <%# 作業BGM %>
-      <audio src="audios/work/WaveSound.mp3" loop id="workbgm1">
-        <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
-      </audio>
-      <audio src="audios/work/rain_sound.mp3" loop id="workbgm2">
-        <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
-      </audio>
-      <audio src="audios/work/Inside_the_cafe.mp3" loop id="workbgm3">
-        <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
-      </audio>
-      <%# 休憩BGM %>
-      <audio src="audios/break/kibitaki.mp3" loop id="break1">
-        <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
-      </audio>
-      <audio src="audios/break/Like_A_Lemon.mp3" loop id="break2">
-        <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
-      </audio>
-      <audio src="audios/break/Midnight_Moon.mp3" loop id="break3">
-        <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
-      </audio>
-      <%# 無音 %>
-      <audio src="audios/muon.mp3" id="muon">
-        <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
-      </audio>
-      <%# アラーム音 %>
-      <audio src="audios/alarm/alarm1.mp3" id="alarm1">
-        <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
-      </audio>
-      <audio src="audios/alarm/zihou1.mp3" id="zihou1">
-        <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
-      </audio>
-      <audio src="audios/alarm/zihou2.mp3" id="zihou2">
-        <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
-      </audio>
-    </div>
     </footer>
   </body>
 </html>

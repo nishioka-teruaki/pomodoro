@@ -323,10 +323,15 @@ window.addEventListener('load', function(){
         // 背景を黄色へ
         backYellow();
         // 休憩BGMを一時止める（アラームが聞こえないため）
-        audio3.pause();
+        if (click_task == 7) {
+          audio3.pause();
+        }
         // 時報の再生
         audio5.play();
-        audio3.play();
+        // 休憩BGMを再会
+        if (click_task == 7) {
+          audio3.play();
+        }
       }
       // もし時間が3秒前なら
       if (time == 3) {

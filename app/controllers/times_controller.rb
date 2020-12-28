@@ -1,14 +1,33 @@
 class TimesController < ApplicationController
   def index
     @music = Music.new
-    if Music.last == nil
-      Music.create(workbgm_id: 1, breakbgm_id: 1) 
+    if user_signed_in?
+      current_user_id = Music.where(user_id: current_user.id)
+      @selectmusic = current_user_id.last
+      unless @selectmusic
+        Music.create(workbgm_id: 1, breakbgm_id: 1) 
+        @selectmusic = Music.last
+      end
+    else
+      current_user_id = Music.where(user_id: nil)
+      @selectmusic = current_user_id.last
+      unless @selectmusic
+        Music.create(workbgm_id: 1, breakbgm_id: 1) 
+        @selectmusic = Music.last
+      end
     end
-    @selectmusic = Music.last
   end
 
   def create
-    @music = Music.new(music_params)
+    binding.pry
+    if user_signed_in?
+      @music = Music.new(music_params)
+    else
+      @music = Music.new(music_params_gest)
+    end
+
+    musicdes = Music.where(user_id: @music.user_id)
+    musicdes.delete_all
     if @music.save
       @selectmusic = Music.last
       redirect_to times_path(@selectmusic)
@@ -18,13 +37,19 @@ class TimesController < ApplicationController
   end
 
   def destroy
-    Music.delete_all
+    musicdes = Music.where(user_id: nil)
+    musicdes.delete_all
     redirect_to times_path
   end
 
   private
 
   def music_params
+    params.require(:music).permit(:workbgm_id, :breakbgm_id).merge(user_id: current_user.id)
+  end
+
+  def music_params_gest
     params.require(:music).permit(:workbgm_id, :breakbgm_id)
   end
+
 end

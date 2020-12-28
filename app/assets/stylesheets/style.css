@@ -32,7 +32,12 @@ header{
   font-weight:  500;
 }
 
-.header_menu_c{
+.lists-right{
+  list-style: none;
+  display: flex;
+}
+
+.user-nickname{
   color: #57C3E9;
   text-decoration: none;
   font-size: 14px;
@@ -40,8 +45,57 @@ header{
   border: 2px solid #57C3E9;
   border-radius: 3px;
   padding: 8px 10px;
-  margin-right: 50px;
-  font-family: 'Noto Sans JP', sans-serif;
+  margin-right: 10px;
+}
+
+.logout{
+  color: #57C3E9;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  border: 2px solid #57C3E9;
+  border-radius: 3px;
+  padding: 8px 10px;
+  margin-right: 10px;
+}
+
+.login{
+  color: #57C3E9;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  border: 2px solid #57C3E9;
+  border-radius: 3px;
+  padding: 8px 10px;
+  margin-right: 10px;
+}
+
+.sign-up{
+  color: #57C3E9;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  border: 2px solid #57C3E9;
+  border-radius: 3px;
+  padding: 8px 10px;
+  margin-right: 10px;
+}
+
+/* 新規登録・ログイン画面 */
+.container {
+  margin: 20px 0;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.container h3 {
+  margin: 0 0 20px;
+  text-align: center;
+  font-weight: normal;
+  font-size: 20px;
+  color: #666;
 }
 
 /* モーダルウィンドウ */
@@ -86,7 +140,7 @@ header{
 footer{
   height: 50px;
   width: 100%;
-  color: #606568;
+  color: #979da1;
   border-top: 1px solid #a9b0b3;
   font-family: 'Noto Sans JP', sans-serif;
   position: absolute;
@@ -107,7 +161,7 @@ footer{
 
 .copyright_a{
   text-decoration: none;
-  color: #606568;
+  color: #979da1;
 }
 
 /* タブレット対応 */
