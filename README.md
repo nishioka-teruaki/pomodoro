@@ -1,23 +1,26 @@
-# README
-
-<img width="1440" alt="ポモドーロ　トップ" src="https://user-images.githubusercontent.com/71683460/103529506-24ef7d00-4ec9-11eb-8fea-70f62f6a4c52.png">
-
 # アプリケーション名
 　ポモドーロタイマー
 
-# アプリケーション概要
-　シンプルなポモドーロタイマーで誰でも直感的に操作ができる
+<img width="1440" alt="ポモドーロ　トップ" src="https://user-images.githubusercontent.com/71683460/103529506-24ef7d00-4ec9-11eb-8fea-70f62f6a4c52.png">
 
 # URL
 　https://pomodoro-30614.herokuapp.com
 
-# テスト用アカウント
+# アプリケーション概要
+　人間の集中力が高く発揮されると言われているポモドーロタイマー（25分作業→5分休憩）を測れるアプリです。
+　なるべくシンプルで直感的な操作でアプリが利用できるものを目指しました。
 
-## Basic認証のIDとパスワード  
-　ID:admin  
-　PASS:2222  
+　開発環境
+　　macbook Air (Retina, 13-inch, 2020)
+　　macOS Catalina (ver10.15.7)
 
 # 利用方法
+
+　１.「作業」ボタンを押して25分をセットします。
+　２.「▶︎」（スタート）ボタンを押します。するとカウントが始まります。
+https://user-images.githubusercontent.com/71683460/103533244-19ec1b00-4ed0-11eb-9872-f58b83718ad5.mov
+
+
 　ユーザー目線を大事に使い方はシンプルにすることを目指した。
 　開発の初期からMVP的な体勢を作るため知人に公開してフィードバックを受けている。
 　「作業ボタン」を押すと25分の時間がセットされてスタートボタンで計測開始。時間になるとアラームがなります。
@@ -35,6 +38,12 @@
 　　https://gyazo.com/d669f839ce41e2970779efb45d1ddaf0
 　「休憩ボタン」
 　　https://gyazo.com/b956538da3a8706db40c372450e13835
+
+# テスト用アカウント
+
+## Basic認証のIDとパスワード  
+　ID:admin  
+　PASS:2222  
 
 # データベース設計
 
