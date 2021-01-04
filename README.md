@@ -18,7 +18,7 @@
 
 　１.「作業」ボタンを押して25分をセットします。
 　２.「▶︎」（スタート）ボタンを押します。するとカウントが始まります。
-https://user-images.githubusercontent.com/71683460/103533244-19ec1b00-4ed0-11eb-9872-f58b83718ad5.mov
+![ワークタイム開始](https://user-images.githubusercontent.com/71683460/103534053-83b8f480-4ed1-11eb-95b6-87b8bfa5084f.gif)
 
 
 　ユーザー目線を大事に使い方はシンプルにすることを目指した。
