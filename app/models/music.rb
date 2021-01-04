@@ -3,5 +3,5 @@ class Music < ApplicationRecord
   belongs_to :workbgm
   belongs_to :breakbgm
 
-  # belongs_to :user　※ログインしていなくてもDBに保存するためコメントアウト（バリデーション回避）
+  # belongs_to :user ※ログインしていなくてもDBに保存するためコメントアウト（バリデーション回避）
 end

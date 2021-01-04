@@ -178,6 +178,4 @@ select {
 	background-repeat: no-repeat;
 	background-size: 12px 10px;
   background-position: right 10px center;
-  /* select要素の背景色を指定するCSS */
-	/* background-color: #bddfff; */
 }

@@ -64,10 +64,10 @@ window.addEventListener('load', function(){
     // 0...初期値
     // 1...作業ボタン
     // 2...休憩ボタン
-    // 3...
-    // 4...
+    // 3...未定
+    // 4...未定
     // 5...作業ボタンが押されてカウントダウンが始まった時のリセット
-    // 6...
+    // 6...未定
     // 7...休憩ボタンが押されてカウトンダウンが始まった時のリセット
 
   let click_num = 0
@@ -77,12 +77,8 @@ window.addEventListener('load', function(){
   // ポモドーロタイマーの実行回数
   let pomo_num = 0
 
-  // 作業中BGM
-  // var audio1 = document.getElementById("workbgm1");
   // アラーム音
   var audio2 = document.getElementById("alarm1");
-  // 休憩中BGM
-  // var audio3 = document.getElementById("break1");
   // 時報BGM（3秒カウント）
   var audio4 = document.getElementById("zihou1");
   // 時報BGM（単発）
@@ -91,23 +87,15 @@ window.addEventListener('load', function(){
   //audioの全体音量0.5(=50%)
   const audios=document.getElementsByTagName('audio');
   for(let n=0; audios.length>n; n++){ audios[n].volume = 0.5; }
-  // audioの音量アップ
-  // document.getElementById('upvolume').onclick = function() {for(let n=0; audios.length>n; n++){audios[n].volume = audios[n].volume + 0.1;}}
-  // audioの音量ダウン
-  // document.getElementById('downvolume').onclick = function() {for(let n=0; audios.length>n; n++){audios[n].volume = audios[n].volume - 0.1;}}
   // audioのバー
   const inputElem = document.getElementById('volume_bar'); // input要素
   const currentValueElem = document.getElementById('current-value'); // 埋め込む先のspan要素
-  // 現在の値をspanに埋め込む関数
-  // const setCurrentValue = (val) => {currentValueElem.innerText = val;}
   // inputイベント時に値をセットする関数
   const rangeOnChange = (e) =>{
     // setCurrentValue(e.target.value); // 現在のボリュームの表示更新
     for(let n=0; audios.length>n; n++){audios[n].volume = e.target.value;}
   }
   inputElem.addEventListener('input', rangeOnChange); // スライダー変化時にイベントを発火
-  // setCurrentValue(inputElem.value); // ページ読み込み時に値をセット
-  // inputElem.removeEventListener('input', rangeOnChange); //SPAでaddEventListenerを使うとき
 
   // ゼロパディング関数
   function zeroPadding(num,length){
