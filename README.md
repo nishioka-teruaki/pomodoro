@@ -1,5 +1,7 @@
 # README
 
+<img width="1440" alt="ポモドーロ　トップ" src="https://user-images.githubusercontent.com/71683460/103529506-24ef7d00-4ec9-11eb-8fea-70f62f6a4c52.png">
+
 # アプリケーション名
 　ポモドーロタイマー
 
