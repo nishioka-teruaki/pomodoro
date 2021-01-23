@@ -23,9 +23,9 @@
   display: inline-block;
   padding: 0.3em 1em;
   text-decoration: none;
-  color: #ffffff;
-  border: solid 2px #ffffff;
-  background:rgba(0,0,0,0);
+  color: #020202;
+  border: solid 0.5px #020202;
+  background:rgba(255, 252, 252, 0.9);
   border-radius: 3px;
   transition: .4s;
 }
