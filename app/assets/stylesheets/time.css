@@ -1,5 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
 
+/* ローディング表示 */
+.box{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  -webkit-transition: all 1.2s ease; /* 1.2秒でフェードアウト */
+          transition: all 1.2s ease;
+  color: #fff; /* ローディングアニメーションカラー */
+  background-color: #333; /* 背景カラー */
+}
+
+/* ローディング表示を消すための定義 */
+.box.loaded{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
 /* サイドバーと時間部分 */
 .wrapper {
   display: flex;
