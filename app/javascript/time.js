@@ -39,9 +39,9 @@ window.addEventListener('load', function(){
     })
   }
 
-  // 音楽の選択
-  const musicstart = document.querySelector(".img_btn_start");
-  musicstart.addEventListener("click", () => { 
+  // 音楽の選択（スタートボタン）
+  const musicstart1 = document.querySelector(".img_btn_start");
+  musicstart1.addEventListener("click", () => { 
     const bgmbox = document.querySelector(".bgm_box");
     var workbgmid = bgmbox.getAttribute("data-workbgmid");
       if(workbgmid == 1) {
@@ -68,13 +68,14 @@ window.addEventListener('load', function(){
   // タイマー処理
   let click_task = 0
     // 0...初期値
-    // 1...作業ボタン
-    // 2...休憩ボタン
-    // 3...未定
-    // 4...未定
-    // 5...作業ボタンが押されてカウントダウンが始まった時のリセット
-    // 6...未定
-    // 7...休憩ボタンが押されてカウトンダウンが始まった時のリセット
+    // 1...作業状態
+    // 2...休憩状態
+    // 3...ループ用作業状態
+    // 4...ループ用休憩状態
+    // 5...作業状態でカウントダウンが始まった時の一時停止用
+    // 6...ループ用　作業状態で一時停止用
+    // 7...休憩状態でカウトンダウンが始まった時の一時停止用
+    // 8...ループ用　休憩状態で一時停止用
 
   let click_num = 0
     // 0...タイマーがストップ状態
@@ -141,7 +142,7 @@ window.addEventListener('load', function(){
   // 作業ボタンがクリックされたとき
   document.getElementById('task').onclick = function() {
     // 作業ボタンが押されていないときもしくは休憩ボタンしか押されていないとき
-    if (click_task == 0 || click_task == 2) {
+    if (click_task == 0 || click_task == 2 ) {
       // タイマー初期値セット
       document.getElementById('min').textContent = zeroPadding(25, 2);
       document.getElementById('sec').textContent = zeroPadding(0, 2);
@@ -157,7 +158,7 @@ window.addEventListener('load', function(){
   // 休憩ボタンがクリックされたとき
   document.getElementById('break').onclick = function() {
     // 休憩ボタンが押されていないときもしくは作業ボタンしか押されていないとき
-    if (click_task == 0 || click_task == 1) {
+    if (click_task == 0 || click_task == 1 ) {
       // タイマー初期値セット
       document.getElementById('min').textContent = zeroPadding(5, 2);
       document.getElementById('sec').textContent = zeroPadding(0, 2);
@@ -185,20 +186,44 @@ window.addEventListener('load', function(){
             // 作業用BGMの再生
             audio1.play();
         }
-        // 休憩ボタンがボタンが押されてカウントダウンが始まったとき
+        // 休憩ボタンが押されてカウントダウンが始まったとき
         if (click_task == 2) {
             // フラグ再セット
             click_task = 7;
             // 休憩用BGMの再生
             audio3.play();
         }
+        // ループ用作業状態ボタンが押されてカウントダウンが始まったとき
+        if (click_task == 3) {
+          // フラグ再セット
+          click_task = 6;
+          // 休憩用BGMの再生
+          audio1.play();
+        }
+        // ループ用休憩状態ボタンが押されてカウントダウンが始まったとき
+        if (click_task == 4) {
+          // フラグ再セット
+          click_task = 8;
+          // 休憩用BGMの再生
+          audio3.play();
+        }
         // 作業ボタンが押されてて一時停止が解除された時
         if (click_task == 5) {
           // 作業用BGMの再生
           audio1.play();
         }
+        // ループ用作業状態ボタンが押されて一時停止が解除された時
+        if (click_task == 6) {
+          // 休憩用BGMの再生
+          audio1.play();
+        }
         // 休憩ボタンが押されてて一時停止が解除された時
         if (click_task == 7) {
+          // 休憩用BGMの再生
+          audio3.play();
+        }
+        // ループ用休憩状態ボタンが押されて一時停止が解除された時
+        if (click_task == 8) {
           // 休憩用BGMの再生
           audio3.play();
         }
@@ -278,6 +303,53 @@ window.addEventListener('load', function(){
         backGreen();
       }
 
+      // ループ用作業ボタンが押されてカウントダウンが始まったとき
+      if (click_task == 6) {
+        // ２５分経過
+        // 作業BGMの（一時）停止
+        audio1.pause();
+        // アラームの再生
+        audio2.play();
+        // ポモドーロ数をプラス１させる
+        pomo_num++;
+        // ポモドーロ数を画面に出力
+        document.getElementById('pomo_number').textContent = pomo_num;
+        // 背景を緑色へ
+        backGreen();
+        // １セット前の場合は休憩へ
+        if ((pomo_num % 4) == 0){
+          // スタート/ストップのフラグ初期化
+          click_num = 0;
+          // タスクボタンのフラグ初期化
+          click_task = 0;
+          // スタートをクリックされた時の関数をストップ
+          clearInterval(counter);
+          // 一時停止ボタンを再生ボタンに書き換え
+          // id変更
+          document.getElementById('start').innerHTML = '<img class="btns" src="./images/start.png"  alt="スタートボタン"><p class="p_side">スタート／ストップ</p>';
+          // ゼロパディング
+          zero_sec = zeroPadding(0,2)
+          zero_min = zeroPadding(0,2)
+          // 画面の表示を初期値に戻す
+          document.getElementById('sec').textContent = zero_sec;
+          document.getElementById('min').textContent = zero_min;
+        } else {
+          // フラグ再セット
+          click_task = 4;
+          // スタート/ストップのフラグ初期化
+          click_num = 0;
+          // タイマー初期値セット
+          document.getElementById('min').textContent = zeroPadding(5, 2);
+          document.getElementById('sec').textContent = zeroPadding(0, 2);
+          // ５分をセット ６０秒×５分=３００
+          time = 300;
+          // 背景を緑色へ
+          backGreen();
+          // 休憩用BGMの再生
+          audio3.play();
+        }
+      }
+
       // 休憩ボタンが押されてカウントダウンが始まったとき
       if (click_task == 7) {
         // ５分経過
@@ -288,21 +360,45 @@ window.addEventListener('load', function(){
         // 背景を青色へ
         backBlue();
       }
-      // スタート/ストップのフラグ初期化
-      click_num = 0;
-      // タスクボタンのフラグ初期化
-      click_task = 0;
-      // スタートをクリックされた時の関数をストップ
-      clearInterval(counter);
-      // 一時停止ボタンを再生ボタンに書き換え
-      // id変更
-      document.getElementById('start').innerHTML = '<img class="btns" src="./images/start.png"  alt="スタートボタン"><p class="p_side">スタート／ストップ</p>';
-      // ゼロパディング
-      zero_sec = zeroPadding(0,2)
-      zero_min = zeroPadding(0,2)
-      // 画面の表示を初期値に戻す
-      document.getElementById('sec').textContent = zero_sec;
-      document.getElementById('min').textContent = zero_min;
+
+      // ループ休憩ボタンが押されてカウントダウンが始まったとき
+      if (click_task == 8) {
+        // ５分経過
+        // 休憩BGMの（一時）停止
+        audio3.pause();
+        // アラームの再生
+        audio2.play();
+        // 背景を青色へ
+        backBlue();
+        // フラグ再セット
+        click_task = 6;
+        // タイマー初期値セット
+        document.getElementById('min').textContent = zeroPadding(25, 2);
+        document.getElementById('sec').textContent = zeroPadding(0, 2);
+        // ２５分をセット ６０秒×２５分=１５００
+        time = 1500;
+        // 休憩用BGMの再生
+        audio1.play();
+      }
+
+      // 作業・休憩ボタンが押されてカウントダウンが始まったときの初期化
+      if (click_task == 5 || click_task == 7 ) {
+        // スタート/ストップのフラグ初期化
+        click_num = 0;
+        // タスクボタンのフラグ初期化
+        click_task = 0;
+        // スタートをクリックされた時の関数をストップ
+        clearInterval(counter);
+        // 一時停止ボタンを再生ボタンに書き換え
+        // id変更
+        document.getElementById('start').innerHTML = '<img class="btns" src="./images/start.png"  alt="スタートボタン"><p class="p_side">スタート／ストップ</p>';
+        // ゼロパディング
+        zero_sec = zeroPadding(0,2)
+        zero_min = zeroPadding(0,2)
+        // 画面の表示を初期値に戻す
+        document.getElementById('sec').textContent = zero_sec;
+        document.getElementById('min').textContent = zero_min;
+      }
 
       // それ以外の処理
     } else {
@@ -322,7 +418,7 @@ window.addEventListener('load', function(){
         }
         // 時報の再生
         audio5.play();
-        // 休憩BGMを再会
+        // 休憩BGMを再開
         if (click_task == 7) {
           audio3.play();
         }
@@ -332,19 +428,39 @@ window.addEventListener('load', function(){
         // 背景を赤色へ
         backRed()
         // 作業ボタンが押されてカウントダウンが始まったときのラストカウントダウン
-        if (click_task == 5) {
+        if (click_task == 5 || click_task == 6 ) {
           audio1.pause();
           // 時報の再生
           audio4.play();
         }
         // 休憩ボタンが押されてカウントダウンが始まったときのラストカウントダウン
-        if (click_task == 7) {
+        if (click_task == 7 || click_task == 8 ) {
           audio3.pause();
           // 時報の再生
           audio4.play();
         }
       }
+      // ループ用休憩状態ボタンが押されてカウントダウンが始まったとき
+      if (click_task == 4) {
+        // フラグ再セット
+        click_task = 8;
+      }
     }
   }
+
+  // オートボタンがクリックされたとき
+  document.getElementById('auto').onclick = function() {
+    // 作業ボタンが押されていないときもしくは休憩ボタンしか押されていないとき
+    // タイマー初期値セット
+    document.getElementById('min').textContent = zeroPadding(25, 2);
+    document.getElementById('sec').textContent = zeroPadding(0, 2);
+    // ２５分をセット ６０秒×２５分=１５００
+    time = 1500;
+    // 作業ボタンが押されたフラグ
+    click_task = 3;
+    // 背景を青色へ
+    backBlue();
+  }
+  
 })
 
