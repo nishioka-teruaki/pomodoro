@@ -141,8 +141,8 @@ window.addEventListener('load', function(){
 
   // 作業ボタンがクリックされたとき
   document.getElementById('task').onclick = function() {
-    // 作業ボタンが押されていないときもしくは休憩ボタンしか押されていないとき
-    if (click_task == 0 || click_task == 2 ) {
+    // ２度押し阻止
+    if (click_task == 0 || click_task == 2 || click_task == 3 ) {
       // タイマー初期値セット
       document.getElementById('min').textContent = zeroPadding(25, 2);
       document.getElementById('sec').textContent = zeroPadding(0, 2);
@@ -157,8 +157,8 @@ window.addEventListener('load', function(){
 
   // 休憩ボタンがクリックされたとき
   document.getElementById('break').onclick = function() {
-    // 休憩ボタンが押されていないときもしくは作業ボタンしか押されていないとき
-    if (click_task == 0 || click_task == 1 ) {
+    // ２度押し阻止
+    if (click_task == 0 || click_task == 1 || click_task == 3 ) {
       // タイマー初期値セット
       document.getElementById('min').textContent = zeroPadding(5, 2);
       document.getElementById('sec').textContent = zeroPadding(0, 2);
@@ -168,6 +168,22 @@ window.addEventListener('load', function(){
       click_task = 2;
       // 背景を緑色へ
       backGreen();
+    }
+  }
+
+  // オートボタンがクリックされたとき
+  document.getElementById('auto').onclick = function() {
+    // ２度押し阻止
+    if (click_task == 0 || click_task == 1 || click_task == 2 ) {
+      // タイマー初期値セット
+      document.getElementById('min').textContent = zeroPadding(25, 2);
+      document.getElementById('sec').textContent = zeroPadding(0, 2);
+      // ２５分をセット ６０秒×２５分=１５００
+      time = 1500;
+      // 作業ボタンが押されたフラグ
+      click_task = 3;
+      // 背景を青色へ
+      backBlue();
     }
   }
 
@@ -337,7 +353,7 @@ window.addEventListener('load', function(){
           // フラグ再セット
           click_task = 4;
           // スタート/ストップのフラグ初期化
-          click_num = 0;
+          click_num = 1;
           // タイマー初期値セット
           document.getElementById('min').textContent = zeroPadding(5, 2);
           document.getElementById('sec').textContent = zeroPadding(0, 2);
@@ -372,6 +388,8 @@ window.addEventListener('load', function(){
         backBlue();
         // フラグ再セット
         click_task = 6;
+        // スタート/ストップのフラグ初期化
+        click_num = 1;
         // タイマー初期値セット
         document.getElementById('min').textContent = zeroPadding(25, 2);
         document.getElementById('sec').textContent = zeroPadding(0, 2);
@@ -446,20 +464,6 @@ window.addEventListener('load', function(){
         click_task = 8;
       }
     }
-  }
-
-  // オートボタンがクリックされたとき
-  document.getElementById('auto').onclick = function() {
-    // 作業ボタンが押されていないときもしくは休憩ボタンしか押されていないとき
-    // タイマー初期値セット
-    document.getElementById('min').textContent = zeroPadding(25, 2);
-    document.getElementById('sec').textContent = zeroPadding(0, 2);
-    // ２５分をセット ６０秒×２５分=１５００
-    time = 1500;
-    // 作業ボタンが押されたフラグ
-    click_task = 3;
-    // 背景を青色へ
-    backBlue();
   }
   
 })
