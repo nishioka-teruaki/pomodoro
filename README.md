@@ -8,7 +8,7 @@
 
 ## Basic認証のIDとパスワード  
 　ID:admin  
-　PASS:2222  
+　PASS:2222  
 
 ## テスト用アカウント
 　ID:aaa@bbb.ccc  
