@@ -188,7 +188,7 @@
 /* 時間セットと開始終了ボタンの文字部分 */
 .p_side{
   margin: 10px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 200;
 }
 
@@ -262,7 +262,7 @@
 }
 .music_set{
   margin: 10px;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 200;
 }
 
@@ -314,4 +314,7 @@ select {
 	background-repeat: no-repeat;
 	background-size: 12px 10px;
   background-position: right 10px center;
+  /* select要素の背景色を指定するCSS */
+  background-color: #ffffff;
+  color: #020202;
 }
