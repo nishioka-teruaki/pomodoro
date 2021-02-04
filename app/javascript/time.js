@@ -1,12 +1,10 @@
-window.onload = function() {
+window.addEventListener('load', function(){
+
   // .box に .loaded を追加してローディング表示を消す
   let spinner = document.getElementById('my-spinner');
   spinner.classList.add('loaded');
-}
 
-window.addEventListener('load', function(){
-
-  // 初回ログイン判定
+  //初回ログイン判定
   //Cookie取得
   var checkCookie = document.cookie;
   //Cookie内に【syokai】という文字列があるかないか判定。
