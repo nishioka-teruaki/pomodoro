@@ -123,12 +123,12 @@ header{
   flex-direction: column;
 }
 
-.model_text1{
+.modal_text1{
   margin: 5px auto 10px;
   font-size: large;
 }
 
-.model_text2{
+.modal_text2{
   margin: 10px auto 10px;
 }
 

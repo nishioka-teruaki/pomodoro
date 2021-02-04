@@ -347,6 +347,21 @@ window.addEventListener('load', function(){
           // 画面の表示を初期値に戻す
           document.getElementById('sec').textContent = zero_sec;
           document.getElementById('min').textContent = zero_min;
+          // モーダルウィンドウ２の表示
+          // var btn = document.getElementById('btn');
+          var modal2 = document.getElementById('modal2');
+          modal2.style.display = 'block';
+          // モーダルウィンドウのクローズ
+          var closeBtn = document.getElementById('closeBtn');
+          closeBtn.addEventListener('click', function() {
+            modal2.style.display = 'none';
+          })
+          // モーダルウィンドウのクローズ（外側をクリック時）
+          window.addEventListener('click', function(e) {
+            if (e.target == modal2) {
+              modal2.style.display = 'none';
+            }
+          })
         } else {
           // フラグ再セット
           click_task = 4;
