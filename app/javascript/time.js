@@ -1,9 +1,10 @@
-window.addEventListener('load', function(){
-
+window.onload = function() {
   // .box に .loaded を追加してローディング表示を消す
   let spinner = document.getElementById('my-spinner');
   spinner.classList.add('loaded');
+}
 
+window.addEventListener('load', function(){
   //初回ログイン判定
   //Cookie取得
   var checkCookie = document.cookie;
@@ -480,4 +481,3 @@ window.addEventListener('load', function(){
   }
   
 })
-
