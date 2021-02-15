@@ -5,6 +5,13 @@ window.onload = function() {
 }
 
 window.addEventListener('load', function(){
+  // トップのリンクからルートに飛んだ時
+  document.getElementById("root_pass").onclick = function() {
+    // .box に .loaded を追加してローディング表示を消す
+    let spinner = document.getElementById('my-spinner');
+    spinner.classList.add('loaded');
+  };
+
   //初回ログイン判定
   //Cookie取得
   var checkCookie = document.cookie;
